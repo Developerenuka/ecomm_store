@@ -24,24 +24,24 @@ npm run test
 ```
 
 ### Folder Structure
-/src
-    /actions
-        index.js
-    /components
-        Products.js
-        Cart.js
-        style.scss
-    /helpers
-        Header.js    for common header
-        Modal.js     to show modal in app
-        Toaster.js   common toaster to show alert msgs
-    /reducers
-        Cart.js
-        Product.js
-    /store
-    /test
-        Cart.test.js
-        Product.test.js
+- /src
+    - /actions
+        - index.js
+    - /components
+        - Products.js
+        - Cart.js
+        - style.scss
+    - /helpers
+        - Header.js    for common header
+        - Modal.js     to show modal in app
+        - Toaster.js   common toaster to show alert msgs
+    - /reducers
+        - Cart.js
+        - Product.js
+    - /store
+    - /test
+        - Cart.test.js
+        - Product.test.js
 
 ### Action
 For action related information, refer to the [Actions Documentation](./documentations/ACTIONS.md).
