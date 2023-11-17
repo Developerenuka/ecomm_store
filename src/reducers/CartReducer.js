@@ -1,5 +1,7 @@
 const initialState = {
-  cartProducts: JSON.parse(localStorage.getItem("cartProducts")),
+  cartProducts: JSON.parse(localStorage.getItem("cartProducts"))
+    ? JSON.parse(localStorage.getItem("cartProducts"))
+    : [],
 };
 
 export default function CartReducer(state = initialState, action) {

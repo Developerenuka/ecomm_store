@@ -6,10 +6,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Node Version: v20.9.0
 
 ## How to Run
-
+**On Local**
 1. Install dependencies: `npm install`
 2. Start the development server: `npm start`
 3. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+**generate docker instance**
+docker image build -t ecomm_store:latest .
+docker run -p 3000:3000 ecomm_store:latest
 
 ## Testing
 
@@ -44,4 +48,4 @@ For action related information, refer to the [Actions Documentation](./documenta
 
 ### Reducers
 two reducers are there to manage state of products and cart
-For more detailed information, refer to the [Recuer Documentation](./documentations/PRODUTREDUCER.md) and (./documentations/CARTREDUCER.md)
+For more detailed information, refer to the [Product Reducer Documentation](./documentations/PRODUCTREDUCER.md) and [Cart Reducer Documentation](./documentations/CARTREDUCER.md)
