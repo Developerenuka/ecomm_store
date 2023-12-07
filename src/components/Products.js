@@ -12,13 +12,13 @@ import Header from "../helpers/Header";
 import Toaster from "../helpers/Toaster";
 import WithLocalStorage from "../helpers/withLocalStorage";
 
-
 /**
  * Products component displays a list of products and allows users to add them to the cart.
  * @component
  * @returns {JSX.Element} - The rendered Products component.
  */
 const Products = () => {
+  const [page, setPage] = useState(1);
   const [amount, setAmount] = useState(0);
   const dispatch = useDispatch();
   const productReducer = useSelector((state) => state.products);
@@ -26,9 +26,28 @@ const Products = () => {
     productReducer;
   const cartProducts = useSelector((state) => state.cart.cartProducts);
 
+  // will call handleScroll function when we scroll and reach end of page
   useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [productList]);
+
+  const handleScroll = () => {
+    const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+    if (scrollTop + clientHeight >= scrollHeight - 10) {
+      setPage(page + 1);
+    }
+  };
+
+  useEffect(() => {
+    fetchData(page);
+  }, [page]);
+
+  const fetchData = (page) => {
+    if (page <= 5) {
+      dispatch(getProducts());
+    }
+  };
 
   // to get total amount of selected items
   useEffect(() => {
@@ -82,13 +101,13 @@ const Products = () => {
             // Render product grid if products are available
 
             <div className="product-grid">
-              {productList.map((item) => (
+              {productList.map((item, index) => (
                 // Render each product item
 
                 <div
                   className="product-list"
                   data-testid={`list-${item.id}`}
-                  key={item.id}
+                  key={index}
                 >
                   <img src={item.image} alt="Products" />
                   <div className="product-info">
